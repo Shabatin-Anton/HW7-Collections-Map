@@ -1,4 +1,4 @@
-package main.java.com.homework7.comparators;
+package main.java.com.shabatin.model;
 
 public class Family implements Comparable<Family>{
     private String name;

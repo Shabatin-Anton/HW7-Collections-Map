@@ -1,8 +1,8 @@
-package main.java.com.homework7.executor;
+package main.java.com.shabatin.executor;
 
-import main.java.com.homework7.comparators.Family;
-import main.java.com.homework7.comparators.NameEmbComparator;
-import main.java.com.homework7.comparators.TitleComparator;
+import main.java.com.shabatin.model.Family;
+import main.java.com.shabatin.comparators.NameEmbComparator;
+import main.java.com.shabatin.comparators.TitleComparator;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -11,22 +11,22 @@ import java.util.stream.Collectors;
 
 public class Executor {
 
-    public static void start(){
-        startOne();
-        startTwo();
+    public static void start() {
+        deleteDup();
+        sortMethod();
     }
 
-    public static void startOne(){
-       String str = "1, 2, 3, 4, 4, 5";
-       deleteDuplicates(str);
+    public static void deleteDup() {
+        String str = "1, 2, 3, 4, 4, 5";
+        deleteDuplicates(str);
     }
 
-    public static void startTwo(){
+    public static void sortMethod() {
         Map<Family, Integer> members = new TreeMap<>();
         Map<Family, Integer> data = new TreeMap<>(TitleComparator.comparatorOfTitle());
-        Map<Family,Integer> emblems = new TreeMap<>(NameEmbComparator.sortByNameOfEmblem());
+        Map<Family, Integer> emblems = new TreeMap<>(NameEmbComparator.sortByNameOfEmblem());
 
-        fillMap(members,data,emblems);
+        fillMap(members, data, emblems);
 
         System.out.println("Map:");
         members.forEach(((integer, family) -> System.out.println(integer + " : " + family)));
@@ -38,8 +38,9 @@ public class Executor {
         printMap(emblems);
     }
 
-    public static void fillMap(Map<Family,Integer> ... maps) {
-        for (Map<Family,Integer> map : maps) {
+    @SafeVarargs
+    public static void fillMap(Map<Family, Integer>... maps) {
+        for (Map<Family, Integer> map : maps) {
             map.put(new Family("Stalin", 52, "Leader", "USSR Forever!"), 1);
             map.put(new Family("Churchill", 80, "Prime Minister", "England Forever!"), 2);
             map.put(new Family("Gagarin", 63, "Cosmonaut", "To the Space!, To The Moon!"), 3);

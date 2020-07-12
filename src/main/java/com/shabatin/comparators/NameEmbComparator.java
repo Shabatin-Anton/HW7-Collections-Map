@@ -1,4 +1,6 @@
-package main.java.com.homework7.comparators;
+package main.java.com.shabatin.comparators;
+
+import main.java.com.shabatin.model.Family;
 
 import java.util.Comparator;
 
